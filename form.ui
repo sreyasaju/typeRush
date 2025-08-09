@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>835</width>
+    <width>850</width>
     <height>605</height>
    </rect>
   </property>
@@ -140,10 +140,29 @@ border-radius: 15px</string>
         <rect>
          <x>-10</x>
          <y>10</y>
-         <width>331</width>
+         <width>371</width>
          <height>581</height>
         </rect>
        </property>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>240</y>
+          <width>271</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Baloo Chettan 2</family>
+          <pointsize>64</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>typeRush</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>

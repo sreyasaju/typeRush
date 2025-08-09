@@ -16,13 +16,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QButtonGroup, QGridLayout, QGroupBox,
-    QMainWindow, QPushButton, QSizePolicy, QWidget)
+    QLabel, QMainWindow, QPushButton, QSizePolicy,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(835, 605)
+        MainWindow.resize(850, 605)
         font = QFont()
         font.setFamilies([u"Ubuntu"])
         font.setPointSize(14)
@@ -68,7 +69,14 @@ class Ui_MainWindow(object):
         self.pushButton_4.setFlat(False)
         self.widget_2 = QWidget(self.widget)
         self.widget_2.setObjectName(u"widget_2")
-        self.widget_2.setGeometry(QRect(-10, 10, 331, 581))
+        self.widget_2.setGeometry(QRect(-10, 10, 371, 581))
+        self.label = QLabel(self.widget_2)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(50, 250, 271, 91))
+        font2 = QFont()
+        font2.setFamilies([u"Baloo Chettan 2"])
+        font2.setPointSize(64)
+        self.label.setFont(font2)
 
         self.gridLayout.addWidget(self.widget, 1, 0, 1, 1)
 
@@ -91,5 +99,6 @@ class Ui_MainWindow(object):
         self.groupBox.setTitle("")
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Login", None))
         self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"Register", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"typeRush", None))
     # retranslateUi
 
