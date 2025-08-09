@@ -3,7 +3,7 @@ import hashlib
 
 mycon = sqlconnector.connect(host="localhost", user="root", passwd="", database="test")
 if mycon.is_connected():
-    print("Sucessfully connected to MySQL database")
+    print("Successfully connected to MySQL database")
 cursor = mycon.cursor()
 
 cursor.execute("""
