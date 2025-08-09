@@ -85,7 +85,7 @@ border-radius: 30px</string>
          <property name="font">
           <font>
            <family>Baloo Chettan 2</family>
-           <pointsize>15</pointsize>
+           <pointsize>25</pointsize>
            <bold>true</bold>
           </font>
          </property>
@@ -115,7 +115,7 @@ border-radius: 15px</string>
          <property name="font">
           <font>
            <family>Baloo Chettan 2</family>
-           <pointsize>15</pointsize>
+           <pointsize>25</pointsize>
            <bold>true</bold>
           </font>
          </property>
