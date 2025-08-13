@@ -23,8 +23,7 @@
    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;harmonize&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #00444d
-</string>
+   <string notr="true">background-color: #2a2fa0</string>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>
@@ -36,44 +35,94 @@
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>850</width>
+     <height>605</height>
+    </size>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <widget class="QWidget" name="widget" native="true">
+    <item row="0" column="0" rowspan="2">
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="font">
+       <font>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #2a2fa0
+</string>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>240</y>
+         <width>291</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Baloo Chettan 2</family>
+         <pointsize>69</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>typeRush</string>
+       </property>
+      </widget>
       <widget class="QGroupBox" name="settings">
        <property name="enabled">
         <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
-         <x>370</x>
-         <y>10</y>
-         <width>500</width>
-         <height>571</height>
+         <x>400</x>
+         <y>0</y>
+         <width>455</width>
+         <height>581</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
-         <width>500</width>
+         <width>455</width>
          <height>535</height>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: #e2fffc;
+        <string notr="true">background-color: #e2fbff;
 border-radius: 30px</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <widget class="QGroupBox" name="groupBox">
         <property name="geometry">
          <rect>
-          <x>70</x>
+          <x>60</x>
           <y>150</y>
-          <width>311</width>
+          <width>321</width>
           <height>301</height>
          </rect>
         </property>
         <property name="title">
          <string/>
         </property>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="loginbutton">
          <property name="geometry">
           <rect>
            <x>30</x>
@@ -90,8 +139,10 @@ border-radius: 30px</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: #00798a;
-border-radius: 15px</string>
+          <string notr="true">background-color: #00dacc;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+</string>
          </property>
          <property name="text">
           <string>Login</string>
@@ -103,7 +154,7 @@ border-radius: 15px</string>
           <bool>false</bool>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="registerbutton">
          <property name="geometry">
           <rect>
            <x>30</x>
@@ -120,8 +171,10 @@ border-radius: 15px</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: #00798a;
-border-radius: 15px</string>
+          <string notr="true">background-color: #00dacc;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+</string>
          </property>
          <property name="text">
           <string>Register</string>
@@ -135,35 +188,6 @@ border-radius: 15px</string>
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="widget_2" native="true">
-       <property name="geometry">
-        <rect>
-         <x>-10</x>
-         <y>10</y>
-         <width>371</width>
-         <height>581</height>
-        </rect>
-       </property>
-       <widget class="QLabel" name="label">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>240</y>
-          <width>271</width>
-          <height>91</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Baloo Chettan 2</family>
-          <pointsize>64</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>typeRush</string>
-        </property>
-       </widget>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -171,7 +195,4 @@ border-radius: 15px</string>
  </widget>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="buttonGroup"/>
- </buttongroups>
 </ui>
