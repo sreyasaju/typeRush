@@ -16,15 +16,8 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
 
-class typingGame(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        uic.loadUi("typinggame.ui", self)
-
-
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    widget = typingGame()
-
+    widget = MainWindow()
     widget.show()
     sys.exit(app.exec())
