@@ -1,6 +1,10 @@
 {
     "files": [
+        "home.ui",
+        "logindialog.ui",
         "mainwindow.py",
-        "form.ui"
+        "mainwindow.ui",
+        "signupdialog.ui",
+        "typinggame.ui"
     ]
 }
