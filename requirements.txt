@@ -1,2 +1,7 @@
 PySide6
 mysql-connector-python
+sqlalchemy
+hashlib
+mysql-connector-python
+alembic
+python-dotenv
