@@ -6,222 +6,303 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>900</width>
+    <height>630</height>
    </rect>
   </property>
-  <property name="minimumSize">
+  <property name="maximumSize">
    <size>
-    <width>800</width>
-    <height>600</height>
+    <width>900</width>
+    <height>630</height>
    </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Ubuntu</family>
+    <pointsize>14</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>typeRush</string>
   </property>
+  <property name="whatsThis">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;harmonize&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #e2fbff;</string>
+   <string notr="true">background-color: rgb(39, 43, 140);</string>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
+  </property>
+  <property name="documentMode">
+   <bool>true</bool>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="settings">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>0</y>
-      <width>455</width>
-      <height>535</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>455</width>
-      <height>535</height>
-     </size>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: #e2fbff;
-border-radius: 30px</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-    </property>
-    <widget class="QGroupBox" name="groupBox">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>180</y>
-       <width>321</width>
-       <height>301</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string/>
-     </property>
-     <widget class="QPushButton" name="loginbutton">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>110</y>
-        <width>261</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Baloo Chettan 2</family>
-        <pointsize>25</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: #00dacc;
-color: rgb(255, 255, 255);
-border-radius: 15px;
-</string>
-      </property>
-      <property name="text">
-       <string>View Progress</string>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="registerbutton">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>20</y>
-        <width>261</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Baloo Chettan 2</family>
-        <pointsize>25</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: #00dacc;
-color: rgb(255, 255, 255);
-border-radius: 15px;
-</string>
-      </property>
-      <property name="text">
-       <string>Start Test</string>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="loginbutton_2">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>200</y>
-        <width>261</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Baloo Chettan 2</family>
-        <pointsize>25</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: #00dacc;
-color: rgb(255, 255, 255);
-border-radius: 15px;
-</string>
-      </property>
-      <property name="text">
-       <string>Logout </string>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QLabel" name="subtitle">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>140</y>
-       <width>251</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Baloo Chettan 2</family>
-       <pointsize>24</pointsize>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #393fbf</string>
-     </property>
-     <property name="text">
-      <string>Type Fast. Think Future. </string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="typerush">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>50</y>
-       <width>301</width>
-       <height>91</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Baloo Chettan 2</family>
-       <pointsize>69</pointsize>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(39, 43, 140);</string>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Shadow::Sunken</enum>
-     </property>
-     <property name="midLineWidth">
-      <number>0</number>
-     </property>
-     <property name="text">
-      <string>typeRush</string>
-     </property>
-    </widget>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>24</height>
-    </rect>
+   <property name="minimumSize">
+    <size>
+     <width>850</width>
+     <height>605</height>
+    </size>
    </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="font">
+       <font>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(39, 43, 140)
+</string>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <widget class="QGroupBox" name="whitebox">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>-50</y>
+         <width>421</width>
+         <height>701</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>542</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: #e2fbff;
+border-radius: 30px</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>240</y>
+          <width>321</width>
+          <height>321</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QPushButton" name="logoutbutton">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>140</y>
+           <width>261</width>
+           <height>71</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Baloo Chettan 2</family>
+           <pointsize>25</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: #00dacc;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+</string>
+         </property>
+         <property name="text">
+          <string>View Progress</string>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="startbutton">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>40</y>
+           <width>261</width>
+           <height>71</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Baloo Chettan 2</family>
+           <pointsize>25</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: #00dacc;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+</string>
+         </property>
+         <property name="text">
+          <string>Start test</string>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="progressbutton">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>240</y>
+           <width>261</width>
+           <height>71</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Baloo Chettan 2</family>
+           <pointsize>25</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: #00dacc;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+</string>
+         </property>
+         <property name="text">
+          <string>Logout</string>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="typerush">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>120</y>
+          <width>421</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Baloo Chettan 2</family>
+          <pointsize>69</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(39, 43, 140)</string>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Sunken</enum>
+        </property>
+        <property name="midLineWidth">
+         <number>0</number>
+        </property>
+        <property name="text">
+         <string>typeRush</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="subtitle">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>210</y>
+          <width>251</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Baloo Chettan 2</family>
+          <pointsize>24</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(42, 47, 152)</string>
+        </property>
+        <property name="text">
+         <string>Type Fast. Think Future. </string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QLabel" name="bg_image">
+       <property name="geometry">
+        <rect>
+         <x>-30</x>
+         <y>-20</y>
+         <width>961</width>
+         <height>671</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../assets/typinggame.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="margin">
+        <number>21</number>
+       </property>
+      </widget>
+      <zorder>bg_image</zorder>
+      <zorder>whitebox</zorder>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
