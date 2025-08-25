@@ -15,16 +15,15 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialog, QDialogButtonBox,
-    QGroupBox, QLabel, QLineEdit, QSizePolicy,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QDialog, QGroupBox, QLabel,
+    QLineEdit, QPushButton, QSizePolicy, QWidget)
 
 class Ui_loginDialog(object):
     def setupUi(self, loginDialog):
         if not loginDialog.objectName():
             loginDialog.setObjectName(u"loginDialog")
         loginDialog.resize(420, 350)
-        loginDialog.setMinimumSize(QSize(420, 0))
+        loginDialog.setMinimumSize(QSize(420, 350))
         loginDialog.setMaximumSize(QSize(420, 350))
         loginDialog.setStyleSheet(u"background-color: #e2fbff;\n"
 "border-radius: 30px")
@@ -58,33 +57,43 @@ class Ui_loginDialog(object):
 "border-color: rgb(0, 207, 230);\n"
 "padding: 12px;\n"
 "color:rgb(10, 24, 25);")
-        self.buttonBox = QDialogButtonBox(self.groupBox)
-        self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(10, 240, 361, 61))
-        font1 = QFont()
-        font1.setFamilies([u"Baloo Chettan 2"])
-        font1.setPointSize(18)
-        font1.setWeight(QFont.ExtraBold)
-        self.buttonBox.setFont(font1)
-        self.buttonBox.setStyleSheet(u"background-color: #00dacc;\n"
-"color: rgb(255, 255, 255);\n"
-"border-radius: 15px;\n"
-"padding: 15px;\n"
-"")
-        self.buttonBox.setOrientation(Qt.Orientation.Horizontal)
-        self.buttonBox.setStandardButtons(QDialogButtonBox.StandardButton.Cancel|QDialogButtonBox.StandardButton.Ok)
-        self.buttonBox.setCenterButtons(False)
         self.label = QLabel(self.groupBox)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(40, 50, 81, 21))
+        font1 = QFont()
+        font1.setFamilies([u"Baloo Chettan 2"])
+        font1.setPointSize(20)
+        font1.setBold(True)
+        self.label.setFont(font1)
+        self.label.setStyleSheet(u"color: #00cbbc")
+        self.log_cancel = QPushButton(self.groupBox)
+        self.log_cancel.setObjectName(u"log_cancel")
+        self.log_cancel.setGeometry(QRect(80, 260, 111, 41))
         font2 = QFont()
         font2.setFamilies([u"Baloo Chettan 2"])
-        font2.setPointSize(20)
+        font2.setPointSize(18)
         font2.setBold(True)
-        self.label.setFont(font2)
-        self.label.setStyleSheet(u"color: #00cbbc")
+        self.log_cancel.setFont(font2)
+        self.log_cancel.setStyleSheet(u"background-color: #00dacc;\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 15px;\n"
+"")
+        self.log_cancel.setFlat(False)
+        self.log_ok = QPushButton(self.groupBox)
+        self.log_ok.setObjectName(u"log_ok")
+        self.log_ok.setGeometry(QRect(210, 260, 111, 41))
+        self.log_ok.setFont(font2)
+        self.log_ok.setStyleSheet(u"background-color: #00dacc;\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 15px;\n"
+"")
+        self.log_ok.setFlat(False)
 
         self.retranslateUi(loginDialog)
+
+        self.log_cancel.setDefault(False)
+        self.log_ok.setDefault(False)
+
 
         QMetaObject.connectSlotsByName(loginDialog)
     # setupUi
@@ -95,5 +104,7 @@ class Ui_loginDialog(object):
         self.log_passwordField.setPlaceholderText(QCoreApplication.translate("loginDialog", u"Password", None))
         self.log_usernameField.setPlaceholderText(QCoreApplication.translate("loginDialog", u"Username", None))
         self.label.setText(QCoreApplication.translate("loginDialog", u"Login", None))
+        self.log_cancel.setText(QCoreApplication.translate("loginDialog", u"Cancel", None))
+        self.log_ok.setText(QCoreApplication.translate("loginDialog", u"OK", None))
     # retranslateUi
 
