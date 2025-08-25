@@ -13,7 +13,7 @@
   <property name="minimumSize">
    <size>
     <width>420</width>
-    <height>0</height>
+    <height>350</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -109,39 +109,6 @@ color:rgb(10, 24, 25);</string>
      <string>Username</string>
     </property>
    </widget>
-   <widget class="QDialogButtonBox" name="buttonBox">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>240</y>
-      <width>361</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Baloo Chettan 2</family>
-      <pointsize>18</pointsize>
-      <fontweight>ExtraBold</fontweight>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: #00dacc;
-color: rgb(255, 255, 255);
-border-radius: 15px;
-padding: 15px;
-</string>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Orientation::Horizontal</enum>
-    </property>
-    <property name="standardButtons">
-     <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
-    </property>
-    <property name="centerButtons">
-     <bool>false</bool>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -163,6 +130,70 @@ padding: 15px;
     </property>
     <property name="text">
      <string>Login</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="log_cancel">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>260</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Baloo Chettan 2</family>
+      <pointsize>18</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #00dacc;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+</string>
+    </property>
+    <property name="text">
+     <string>Cancel</string>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="log_ok">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>260</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Baloo Chettan 2</family>
+      <pointsize>18</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #00dacc;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+</string>
+    </property>
+    <property name="text">
+     <string>OK</string>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
