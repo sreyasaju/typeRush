@@ -27,7 +27,13 @@
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: #e2fbff;
-border-radius: 30px</string>
+border-radius: 30px;
+
+QMessageBox {
+    color: rgb(11, 68, 77);
+    font-size: 14px;
+}
+</string>
   </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
