@@ -10,9 +10,12 @@ from PySide6.QtWidgets import QDialog, QMessageBox
 from ui.ui_registerdialog import Ui_registerDialog
 
 load_dotenv()
-con = mysql.connector.connect(host=os.getenv("DB_HOST"),user=os.getenv("DB_USER"),password=os.getenv("DB_PASS"), database=os.getenv("DB_NAME"))
+con = mysql.connector.connect(host=os.getenv("DB_HOST"),user=os.getenv("DB_USER"),password=os.getenv("DB_PASS"))
 cur = con.cursor()
 
+cur.execute("CREATE DATABASE IF NOT EXISTS typerush_db")
+
+con.database = "typerush_db"
 cur.execute("""
 	CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(50) PRIMARY KEY,
@@ -21,6 +24,7 @@ cur.execute("""
 )
 """)
 con.commit()
+
 
 class RegisterDialog(QDialog):
     def __init__(self, parent=None):
@@ -66,10 +70,7 @@ class RegisterDialog(QDialog):
             )
             con.commit()
             QMessageBox.information(self, "Success", f"User '{username}' registered successfully!")
-            self.accept()
-            if self.parent():  
-                self.parent().show()  
-            con.close()
+            self.accept() 
         except mysql.connector.IntegrityError:
             QMessageBox.warning(self, "Error", "Username already exists")
 
