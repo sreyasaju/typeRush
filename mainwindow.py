@@ -1,7 +1,7 @@
 # This Python file uses the following encoding: utf-8
 import sys
 
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow, QDialog
 
 from ui.ui_mainwindow import Ui_MainWindow
 
@@ -18,7 +18,12 @@ class MainWindow(QMainWindow):
     def open_login_dialog(self):
         from login import LoginDialog
         logindialog = LoginDialog(self)
-        logindialog.exec()    
+        result = logindialog.exec()
+        if result == QDialog.Accepted:
+            from home import HomeWindow
+            self.home_window = HomeWindow()
+            self.home_window.show()
+            self.close()
 
     def open_register_dialog(self):
         from register import RegisterDialog
@@ -28,6 +33,16 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setStyleSheet("""
+    QMessageBox {
+        background-color: #e6faff;  
+        font-size: 14px;
+        font-family: 'Baloo Chettan 2';
+    }
+    QMessageBox QLabel {
+        color: #053b37;
+    }
+    """)
     widget = MainWindow()
 
     widget.show()

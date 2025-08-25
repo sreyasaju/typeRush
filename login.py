@@ -8,6 +8,7 @@ from password_utils import verify_password, decode_salt
 
 from PySide6.QtWidgets import QDialog, QMessageBox
 from ui.ui_logindialog import Ui_loginDialog
+from home import HomeWindow 
 
 load_dotenv()
 
@@ -58,8 +59,7 @@ class LoginDialog(QDialog):
         if row and verify_password(password, row[0], decode_salt(row[1])):
             QMessageBox.information(self, "Success", f"Welcome, {username}!")
             self.accept()
-            if self.parent():
-                self.parent().show()
+
         else:
             QMessageBox.warning(self, "Error", "Invalid username or password")
             self.ui.log_usernameField.clear()

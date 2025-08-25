@@ -26,7 +26,13 @@ class Ui_loginDialog(object):
         loginDialog.setMinimumSize(QSize(420, 350))
         loginDialog.setMaximumSize(QSize(420, 350))
         loginDialog.setStyleSheet(u"background-color: #e2fbff;\n"
-"border-radius: 30px")
+"border-radius: 30px;\n"
+"\n"
+"QMessageBox {\n"
+"    color: rgb(11, 68, 77);\n"
+"    font-size: 14px;\n"
+"}\n"
+"")
         self.groupBox = QGroupBox(loginDialog)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(0, 0, 420, 350))
