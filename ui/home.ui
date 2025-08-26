@@ -120,7 +120,7 @@ border-radius: 30px</string>
         <property name="title">
          <string/>
         </property>
-        <widget class="QPushButton" name="logoutbutton">
+        <widget class="QPushButton" name="progressbutton">
          <property name="geometry">
           <rect>
            <x>30</x>
@@ -184,7 +184,7 @@ border-radius: 15px;
           <bool>false</bool>
          </property>
         </widget>
-        <widget class="QPushButton" name="progressbutton">
+        <widget class="QPushButton" name="logoutbutton">
          <property name="geometry">
           <rect>
            <x>30</x>

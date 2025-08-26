@@ -97,7 +97,7 @@ background-color: rgb(199, 235, 241);
 border-radius: 30px;</string>
      </property>
      <property name="text">
-      <string>60</string>
+      <string/>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -110,7 +110,7 @@ border-radius: 30px;</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>340</y>
+       <y>320</y>
        <width>761</width>
        <height>171</height>
       </rect>
@@ -144,7 +144,7 @@ background-color: rgb(232, 252, 255)</string>
       <rect>
        <x>50</x>
        <y>120</y>
-       <width>751</width>
+       <width>761</width>
        <height>191</height>
       </rect>
      </property>
@@ -163,6 +163,70 @@ background-color: rgb(232, 252, 255)</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="restartbutton">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>520</y>
+       <width>111</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Baloo Chettan 2</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #00dacc;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+</string>
+     </property>
+     <property name="text">
+      <string>Start over!</string>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="homebutton">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>520</y>
+       <width>111</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Baloo Chettan 2</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #00dacc;
+color: rgb(255, 255, 255);
+border-radius: 15px;
+</string>
+     </property>
+     <property name="text">
+      <string>Home</string>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
      </property>
     </widget>
    </widget>
