@@ -2,7 +2,7 @@ import time
 import os
 from dotenv import load_dotenv
 import random
-from mainwindow import MainWindow       
+from mainwindow import MainWindow   
 import mysql.connector
 from mysql.connector import Error
 from PySide6.QtWidgets import QDialog, QMainWindow
@@ -81,7 +81,7 @@ class TypingGameWindow(QMainWindow):
         typed_text = self.ui.textfield.toPlainText()
         if not typed_text:
             return
-        # start timer on first keypress
+        #  start timer on first keypress
         if not self.timer.isActive() and self.ui.textfield.toPlainText():
             self.start_time = time.time()
             self.timer.start(1000)
@@ -171,4 +171,3 @@ if __name__ == "__main__":
         duration = settings_dialog.duration
         window = TypingGameWindow(duration=duration)
         window.show()
-        sys.exit(app.exec())
