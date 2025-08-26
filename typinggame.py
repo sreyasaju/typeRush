@@ -72,6 +72,9 @@ class TypingGameWindow(QMainWindow):
         self.timer.timeout.connect(self.update_timer)
         self.ui.textfield.textChanged.connect(self.handle_changes)
 
+        self.ui.homebutton.clicked.connect(self.handle_homebutton)
+        self.ui.restartbutton.clicked.connect(self.handle_restartbutton)
+
         self.all_paragraphs_shown = []
 
         self.start_new_paragraph()
@@ -99,7 +102,7 @@ class TypingGameWindow(QMainWindow):
         # create extra selections for highlighting wrong chars
         selections = []
 
-        matcher= difflib.SequenceMatcher(None, typed_text, reference)
+        matcher= difflib.SequenceMatcher(None, typed_text, reference) # Levenshtein distance calculations
 
         for tag, i1, i2, j1, j2 in matcher.get_opcodes():
             if tag in ("replace", "delete", "insert"):
@@ -144,6 +147,27 @@ class TypingGameWindow(QMainWindow):
             "Results",
             f"Accuracy: {accuracy:.2f}% \n WPM: {wpm:.2f} \n Total Characters: {len(self.total_typed_text.strip())}"
         )
+
+    def handle_homebutton(self):
+        from home import HomeWindow
+        self.home_window = HomeWindow()
+        self.home_window.show()
+        self.close()
+    
+    def handle_restartbutton(self):
+        from settings import SettingsDialog
+        self.settings_dialog = SettingsDialog(self)
+        if self.settings_dialog.exec() == QDialog.Accepted:
+            new_duration = self.settings_dialog.duration
+            # Reset game state
+            self.duration = new_duration
+            self.time_left = new_duration
+            self.total_typed_text = ""
+            self.all_paragraphs_shown = []
+            self.start_new_paragraph()
+            self.ui.textfield.setReadOnly(False)
+            self.game_over = False
+            self.timer.stop()
 
 
 def run_sql_file(filename):

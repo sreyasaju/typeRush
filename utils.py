@@ -1,8 +1,11 @@
 
+import difflib
+
 def calculate_accuracy(user_input, original):
-   correct = sum(1 for i, c in enumerate(user_input) if i < len(original) and c == original[i])
-   accuracy = (correct / len(original)) * 100
-   return accuracy
+    if not original:
+        return 100.0
+    matcher = difflib.SequenceMatcher(None, user_input, original)
+    return matcher.ratio() * 100
 
 
 def calculate_wpm(user_input: str, elapsed_time: float) -> float:
