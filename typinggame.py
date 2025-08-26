@@ -58,6 +58,7 @@ class TypingGameWindow(QMainWindow):
         self.current_paragraph = ""
         self.total_typed_text = ""
         self.start_time = None
+        self.game_over = False
         self.paragraphs = get_paragraphs_from_db() or paragraphs
 
         self.timer = QTimer()
@@ -81,7 +82,7 @@ class TypingGameWindow(QMainWindow):
         typed_text = self.ui.textfield.toPlainText()
         if not typed_text:
             return
-        #  start timer on first keypress
+        # start timer on first keypress
         if not self.timer.isActive() and self.ui.textfield.toPlainText():
             self.start_time = time.time()
             self.timer.start(1000)
@@ -93,13 +94,17 @@ class TypingGameWindow(QMainWindow):
             self.start_new_paragraph()
             
     def update_timer(self):
+        if self.game_over:
+            return
         self.time_left -= 1
         self.ui.timer.setText(str(self.time_left))
         if self.time_left <= 0:
             self.timer.stop()
             self.total_typed_text += " " + self.ui.textfield.toPlainText().strip()
             self.show_results()
-    
+            self.game_over = True
+            self.ui.textfield.setReadOnly(True)
+            
     def show_results(self):
         reference_text = " ".join(self.all_paragraphs_shown)
         elapsed_time = self.duration 
@@ -109,7 +114,7 @@ class TypingGameWindow(QMainWindow):
         QMessageBox.information(
             self,
             "Results",
-            f"Accuracy: {accuracy:.2f}%\nWPM: {wpm:.2f}\nTotal Characters: {len(self.total_typed_text.strip())}"
+            f"Accuracy: {accuracy:.2f}% \n WPM: {wpm:.2f} \n Total Characters: {len(self.total_typed_text.strip())}"
         )
 
 
@@ -159,15 +164,28 @@ def get_paragraphs_from_db():
             con.close()
 
 
+
 if __name__ == "__main__":
-    run_sql_file("paragraphs.sql")
-    # Get duration from settings
+    import traceback
     from settings import SettingsDialog
     from PySide6.QtWidgets import QApplication
     import sys
-    app = QApplication(sys.argv)
-    settings_dialog = SettingsDialog()
-    if settings_dialog.exec() == QDialog.Accepted:
-        duration = settings_dialog.duration
-        window = TypingGameWindow(duration=duration)
-        window.show()
+    try:
+        run_sql_file("paragraphs.sql")
+
+        app = QApplication(sys.argv)
+        settings_dialog = SettingsDialog()
+
+        if settings_dialog.exec() == QDialog.Accepted:
+            duration = settings_dialog.duration
+
+            global window
+            window = TypingGameWindow(duration=duration)
+            window.show()
+
+            app.exec()
+        else:
+            print("Settings canceled, exiting.")
+
+    except Exception:
+        traceback.print_exc()
