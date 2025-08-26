@@ -61,19 +61,19 @@ class Ui_home(object):
         self.groupBox = QGroupBox(self.whitebox)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(50, 240, 321, 321))
-        self.logoutbutton = QPushButton(self.groupBox)
-        self.logoutbutton.setObjectName(u"logoutbutton")
-        self.logoutbutton.setGeometry(QRect(30, 140, 261, 71))
+        self.progressbutton = QPushButton(self.groupBox)
+        self.progressbutton.setObjectName(u"progressbutton")
+        self.progressbutton.setGeometry(QRect(30, 140, 261, 71))
         font2 = QFont()
         font2.setFamilies([u"Baloo Chettan 2"])
         font2.setPointSize(25)
         font2.setBold(True)
-        self.logoutbutton.setFont(font2)
-        self.logoutbutton.setStyleSheet(u"background-color: #00dacc;\n"
+        self.progressbutton.setFont(font2)
+        self.progressbutton.setStyleSheet(u"background-color: #00dacc;\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius: 15px;\n"
 "")
-        self.logoutbutton.setFlat(False)
+        self.progressbutton.setFlat(False)
         self.startbutton = QPushButton(self.groupBox)
         self.startbutton.setObjectName(u"startbutton")
         self.startbutton.setGeometry(QRect(30, 40, 261, 71))
@@ -83,15 +83,15 @@ class Ui_home(object):
 "border-radius: 15px;\n"
 "")
         self.startbutton.setFlat(False)
-        self.progressbutton = QPushButton(self.groupBox)
-        self.progressbutton.setObjectName(u"progressbutton")
-        self.progressbutton.setGeometry(QRect(30, 240, 261, 71))
-        self.progressbutton.setFont(font2)
-        self.progressbutton.setStyleSheet(u"background-color: #00dacc;\n"
+        self.logoutbutton = QPushButton(self.groupBox)
+        self.logoutbutton.setObjectName(u"logoutbutton")
+        self.logoutbutton.setGeometry(QRect(30, 240, 261, 71))
+        self.logoutbutton.setFont(font2)
+        self.logoutbutton.setStyleSheet(u"background-color: #00dacc;\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius: 15px;\n"
 "")
-        self.progressbutton.setFlat(False)
+        self.logoutbutton.setFlat(False)
         self.typerush = QLabel(self.whitebox)
         self.typerush.setObjectName(u"typerush")
         self.typerush.setGeometry(QRect(0, 120, 421, 91))
@@ -128,9 +128,9 @@ class Ui_home(object):
 
         self.retranslateUi(home)
 
-        self.logoutbutton.setDefault(False)
-        self.startbutton.setDefault(False)
         self.progressbutton.setDefault(False)
+        self.startbutton.setDefault(False)
+        self.logoutbutton.setDefault(False)
 
 
         QMetaObject.connectSlotsByName(home)
@@ -142,9 +142,9 @@ class Ui_home(object):
         home.setWhatsThis(QCoreApplication.translate("home", u"<html><head/><body><p><br/></p></body></html>", None))
 #endif // QT_CONFIG(whatsthis)
         self.groupBox.setTitle("")
-        self.logoutbutton.setText(QCoreApplication.translate("home", u"View Progress", None))
+        self.progressbutton.setText(QCoreApplication.translate("home", u"View Progress", None))
         self.startbutton.setText(QCoreApplication.translate("home", u"Start test", None))
-        self.progressbutton.setText(QCoreApplication.translate("home", u"Logout", None))
+        self.logoutbutton.setText(QCoreApplication.translate("home", u"Logout", None))
         self.typerush.setText(QCoreApplication.translate("home", u"typeRush", None))
         self.subtitle.setText(QCoreApplication.translate("home", u"Type Fast. Think Future. ", None))
         self.bg_image.setText("")
