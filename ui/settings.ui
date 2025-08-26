@@ -83,6 +83,9 @@ border-color: rgb(0, 207, 230);
 padding: 12px;
 color:rgb(10, 24, 25);</string>
     </property>
+    <property name="inputMethodHints">
+     <set>Qt::InputMethodHint::ImhDigitsOnly</set>
+    </property>
     <property name="maxLength">
      <number>12</number>
     </property>

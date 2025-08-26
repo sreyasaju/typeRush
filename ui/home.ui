@@ -288,7 +288,7 @@ border-radius: 15px;
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>../assets/underwater.png</pixmap>
+        <pixmap>../assets/typinggame.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
