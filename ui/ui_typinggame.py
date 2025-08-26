@@ -16,7 +16,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QGroupBox, QLabel, QMainWindow,
-    QSizePolicy, QTextEdit, QWidget)
+    QPushButton, QSizePolicy, QTextEdit, QWidget)
 
 class Ui_typingGame(object):
     def setupUi(self, typingGame):
@@ -59,7 +59,7 @@ class Ui_typingGame(object):
         self.timer.setWordWrap(True)
         self.textfield = QTextEdit(self.settings)
         self.textfield.setObjectName(u"textfield")
-        self.textfield.setGeometry(QRect(50, 340, 761, 171))
+        self.textfield.setGeometry(QRect(50, 320, 761, 171))
         font2 = QFont()
         font2.setFamilies([u"Baloo Chettan 2"])
         font2.setPointSize(30)
@@ -72,7 +72,7 @@ class Ui_typingGame(object):
         self.textfield.setMidLineWidth(7)
         self.sentencelabel = QLabel(self.settings)
         self.sentencelabel.setObjectName(u"sentencelabel")
-        self.sentencelabel.setGeometry(QRect(50, 120, 751, 191))
+        self.sentencelabel.setGeometry(QRect(50, 120, 761, 191))
         font3 = QFont()
         font3.setFamilies([u"Baloo Chettan 2"])
         font3.setPointSize(32)
@@ -80,9 +80,35 @@ class Ui_typingGame(object):
         self.sentencelabel.setFont(font3)
         self.sentencelabel.setStyleSheet(u"color:rgb(0, 116, 132)")
         self.sentencelabel.setWordWrap(True)
+        self.restartbutton = QPushButton(self.settings)
+        self.restartbutton.setObjectName(u"restartbutton")
+        self.restartbutton.setGeometry(QRect(460, 520, 111, 41))
+        font4 = QFont()
+        font4.setFamilies([u"Baloo Chettan 2"])
+        font4.setPointSize(18)
+        font4.setBold(True)
+        self.restartbutton.setFont(font4)
+        self.restartbutton.setStyleSheet(u"background-color: #00dacc;\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 15px;\n"
+"")
+        self.restartbutton.setFlat(False)
+        self.homebutton = QPushButton(self.settings)
+        self.homebutton.setObjectName(u"homebutton")
+        self.homebutton.setGeometry(QRect(280, 520, 111, 41))
+        self.homebutton.setFont(font4)
+        self.homebutton.setStyleSheet(u"background-color: #00dacc;\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 15px;\n"
+"")
+        self.homebutton.setFlat(False)
         typingGame.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(typingGame)
+
+        self.restartbutton.setDefault(False)
+        self.homebutton.setDefault(False)
+
 
         QMetaObject.connectSlotsByName(typingGame)
     # setupUi
@@ -92,8 +118,10 @@ class Ui_typingGame(object):
 #if QT_CONFIG(whatsthis)
         typingGame.setWhatsThis(QCoreApplication.translate("typingGame", u"<html><head/><body><p>harmonize</p></body></html>", None))
 #endif // QT_CONFIG(whatsthis)
-        self.timer.setText(QCoreApplication.translate("typingGame", u"60", None))
+        self.timer.setText("")
         self.textfield.setPlaceholderText(QCoreApplication.translate("typingGame", u"Start typing!", None))
         self.sentencelabel.setText(QCoreApplication.translate("typingGame", u"Fetching the sentences.....", None))
+        self.restartbutton.setText(QCoreApplication.translate("typingGame", u"Start over!", None))
+        self.homebutton.setText(QCoreApplication.translate("typingGame", u"Home", None))
     # retranslateUi
 

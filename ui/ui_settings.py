@@ -52,6 +52,7 @@ class Ui_settings(object):
 "border-color: rgb(0, 207, 230);\n"
 "padding: 12px;\n"
 "color:rgb(10, 24, 25);")
+        self.durationField.setInputMethodHints(Qt.InputMethodHint.ImhDigitsOnly)
         self.durationField.setMaxLength(12)
         self.setting_title = QLabel(self.groupBox)
         self.setting_title.setObjectName(u"setting_title")
