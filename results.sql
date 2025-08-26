@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS typing_results (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    accuracy FLOAT NOT NULL,
+    wpm FLOAT NOT NULL,
+    total_chars INT NOT NULL,
+    timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
