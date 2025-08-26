@@ -1,16 +1,23 @@
 import time
 import os
+import difflib
+
 from dotenv import load_dotenv
 import random
 from mainwindow import MainWindow   
 import mysql.connector
+
 from mysql.connector import Error
 from PySide6.QtWidgets import QDialog, QMainWindow
 from utils import calculate_wpm, calculate_accuracy
 from settings import SettingsDialog
 from ui.ui_typinggame import Ui_typingGame
+
 from PySide6.QtCore import QTimer
-from PySide6.QtWidgets import QMessageBox
+from PySide6.QtWidgets import QMessageBox, QTextEdit
+from PySide6.QtGui import QTextCharFormat, QBrush, QColor, QTextCursor
+
+
 
 # fallback sample paragraphs
 paragraphs = [
@@ -75,23 +82,44 @@ class TypingGameWindow(QMainWindow):
         self.all_paragraphs_shown.append(self.current_paragraph)
         self.ui.sentencelabel.setText(self.current_paragraph)
         self.ui.textfield.clear()
-        self.time_left = self.duration
-        self.ui.timer.setText(str(self.time_left))
 
     def handle_changes(self):
         typed_text = self.ui.textfield.toPlainText()
+        reference = self.current_paragraph
+
         if not typed_text:
+            self.ui.textfield.setExtraSelections([])  # clear highlights
             return
+
         # start timer on first keypress
-        if not self.timer.isActive() and self.ui.textfield.toPlainText():
+        if not self.timer.isActive():
             self.start_time = time.time()
             self.timer.start(1000)
 
-        if typed_text.strip() == self.current_paragraph.strip(): #if the user is so fast, and finished before time ended!
-            self.total_typed_text += " " + typed_text.strip()
+        # create extra selections for highlighting wrong chars
+        selections = []
 
-            # start a new paragraph immediately
-            self.start_new_paragraph()
+        matcher= difflib.SequenceMatcher(None, typed_text, reference)
+
+        for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+            if tag in ("replace", "delete", "insert"):
+                for position in range(i1, i2):
+                    selection  = QTextEdit.ExtraSelection()
+                    format = QTextCharFormat()
+                    format.setBackground(QColor("#ffcccc"))  # mistakes.....
+                    selection.format = format
+                    cursor = self.ui.textfield.textCursor()
+                    cursor.setPosition(position)
+                    cursor.movePosition(QTextCursor.Right, QTextCursor.KeepAnchor, 1)   
+                    selection.cursor = cursor
+                    selections.append(selection)
+
+        # apply highlights
+        self.ui.textfield.setExtraSelections(selections)
+
+        if len(typed_text.strip()) >= len(reference.strip()):
+            self.total_typed_text += " " + typed_text.strip()
+            self.start_new_paragraph() #fast user? next paragraph!!!
             
     def update_timer(self):
         if self.game_over:
