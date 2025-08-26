@@ -1,11 +1,11 @@
+import Levenshtein
 
-import difflib
-
-def calculate_accuracy(user_input, original):
+def calculate_accuracy(user_input: str, original: str) -> float:
     if not original:
         return 100.0
-    matcher = difflib.SequenceMatcher(None, user_input, original)
-    return matcher.ratio() * 100
+    distance = Levenshtein.distance(user_input, original)
+    accuracy = max(0.0, (1 - distance / len(original)) * 100)
+    return accuracy
 
 
 def calculate_wpm(user_input: str, elapsed_time: float) -> float:
