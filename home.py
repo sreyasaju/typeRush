@@ -1,5 +1,5 @@
 # home.py
-from PySide6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QMainWindow, QDialog
 from ui.ui_home import Ui_home 
 from settings import SettingsDialog
 from typinggame import TypingGameWindow
@@ -16,7 +16,7 @@ class HomeWindow(QMainWindow):
 
     def open_settings(self):
         settings_dialog = SettingsDialog(self)
-        if settings_dialog.exec() == SettingsDialog.Accepted:
+        if settings_dialog.exec() == QDialog.Accepted:
             # settings dialog closed with Ready
             duration = settings_dialog.duration
             self.close()
