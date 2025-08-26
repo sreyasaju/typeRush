@@ -20,4 +20,4 @@ class SettingsDialog(QDialog):
             return
 
         self.duration = int(duration_text)
-        self.accept()   
+        self.accept()
