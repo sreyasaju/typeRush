@@ -1,6 +1,6 @@
 # typeRush
 
-
+![preview.png](assets/preview.png)
 > Under development!
 
 **TypeRush** is an interactive typing game built with Python and PySide6. It helps not only to track typing *accuracy, words per minute (WPM)*, and other metrics, but also to raise awareness about **climate change**. It also provides feedback to users to help  improve their typing skills by integrating with *MySQL* for storing and fetching data.
