@@ -20,10 +20,11 @@ font_path = "assets/font/BalooChettan2-VariableFont_wght.ttf"
 custom_font = fm.FontProperties(fname=font_path)
 
 class ProgressWindow(QMainWindow):
-    def __init__(self, parent=None):
+    def __init__(self, user_id, parent=None):
         super().__init__(parent)
         self.ui = Ui_progresswindow()
         self.ui.setupUi(self)
+        self.user_id = user_id
 
         self.ui.homebutton.clicked.connect(self.handle_homebutton)
         # Fetch all progress for plotting
@@ -57,8 +58,9 @@ class ProgressWindow(QMainWindow):
             cur.execute("""
                 SELECT timestamp, wpm
                 FROM typing_results
+                WHERE user_id = %s
                 ORDER BY timestamp ASC
-            """)
+            """, (self.user_id,))
             rows = cur.fetchall()
             df = pd.DataFrame(rows, columns=["timestamp", "wpm"])
             # Convert timestamp to date for plotting
@@ -86,9 +88,10 @@ class ProgressWindow(QMainWindow):
             cur.execute("""
                 SELECT wpm, accuracy, total_chars, timestamp
                 FROM typing_results
+                WHERE user_id = %s
                 ORDER BY timestamp DESC
                 LIMIT 1
-            """)
+            """, (self.user_id,))
             row = cur.fetchone()
             return row  # tuple: (wpm, accuracy, total_chars, timestamp)
         except Error as e:
@@ -147,7 +150,7 @@ class ProgressWindow(QMainWindow):
 
     def handle_homebutton(self):
         from home import HomeWindow
-        self.home_window = HomeWindow()
+        self.home_window = HomeWindow(user_id=self.user_id)
         self.home_window.show()
         self.close()
 

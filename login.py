@@ -2,7 +2,7 @@ import mysql.connector
 from dotenv import load_dotenv
 import os
 from password_utils import verify_password, decode_salt
-
+from mainwindow import show_message
 from PySide6.QtWidgets import QDialog, QMessageBox
 from ui.ui_logindialog import Ui_loginDialog
 from home import HomeWindow 
@@ -23,6 +23,7 @@ class LoginDialog(QDialog):
         super().__init__(parent)
         self.ui = Ui_loginDialog()
         self.ui.setupUi(self)
+        self.user_id = None
 
         self.ui.log_ok.clicked.connect(self.handle_ok)
         self.ui.log_cancel.clicked.connect(self.handle_cancel)
@@ -30,12 +31,12 @@ class LoginDialog(QDialog):
     def is_valid_username(self, username):
         if " " in username or username != username.strip():
             return False
-        return username.isalnum()
+        return username.isalnum() and username.isascii()
 
     def is_valid_password(self, password):
         if " " in password or password != password.strip():
             return False
-        return password.isalnum()
+        return password.isalnum() and password.isascii()
 
     # login button handler
     def handle_ok(self):
@@ -43,22 +44,23 @@ class LoginDialog(QDialog):
         password = self.ui.log_passwordField.text()
 
         if not self.is_valid_username(username):
-            QMessageBox.warning(self, "Error", "Invalid username format")
+            show_message(self, "Error", "Invalid username format", icon=QMessageBox.Warning)
             return
 
         if not self.is_valid_password(password):
-            QMessageBox.warning(self, "Error", "Invalid password format")
+            show_message(self, "Error", "Invalid password format", icon=QMessageBox.Warning)
             return
 
         cur.execute("SELECT password, salt FROM users WHERE username = %s", (username.strip(),))
         row = cur.fetchone()
 
         if row and verify_password(password, row[0], decode_salt(row[1])):
-            QMessageBox.information(self, "Success", f"Welcome, {username}!")
-            self.accept()
+            show_message(self, "Success", f"Welcome, {username}!", icon=QMessageBox.Information)
+            self.user_id = username
+            self.accept()  # close login dialog
 
         else:
-            QMessageBox.warning(self, "Error", "Invalid username or password")
+            show_message(self, "Error", "Invalid username or password", icon=QMessageBox.Warning)
             self.ui.log_usernameField.clear()
             self.ui.log_passwordField.clear()
 

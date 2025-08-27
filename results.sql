@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS typing_results (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(250) NOT NULL,  
     accuracy FLOAT NOT NULL,
     wpm FLOAT NOT NULL,
     total_chars INT NOT NULL,
