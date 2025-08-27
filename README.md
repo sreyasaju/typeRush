@@ -1,6 +1,12 @@
 # typeRush
 
 ![preview.png](assets/preview.png)
+
+![Python](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)
+![PySide6](https://img.shields.io/badge/PySide6-Qt%20Framework-green?logo=qt&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange?logo=mysql&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-purple)
+
 > Under development!
 
 **TypeRush** is an interactive typing game built with Python and PySide6. It helps not only to track typing *accuracy, words per minute (WPM)*, and other metrics, but also to raise awareness about **climate change**. It also provides feedback to users to help  improve their typing skills by integrating with *MySQL* for storing and fetching data.
@@ -12,7 +18,7 @@ The goal of TypeRush is to educate users about climate change and provide a fun 
 - Typing Accuracy Tracking- Calculates typing accuracy using the Levenshtein distance.
 - WPM Calculation- Measures words per minute.
 - Custom GUI- Vibrant PySide6 interface.
-- Performance Summary- Shows results after each typing session.
+- Performance- Shows results after each typing session.
 - User Accounts- Register and log in with MySQL to track your progress.
 
 ## Installation:
@@ -48,7 +54,7 @@ Add do star the repo ⭐️
 ```
 MIT License
 
-Copyright (c) 2025 Sreya Saju and typeRush contributors
+Copyright (c) 2025 typeRush contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -70,5 +76,5 @@ SOFTWARE.
 ```
 
 <hr>
-Copyright © 2025-2026 Sreya Saju and typeRush contributors
+Copyright © 2025-2026 typeRush contributors
 
