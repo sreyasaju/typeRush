@@ -21,6 +21,10 @@ The goal of TypeRush is to educate users about climate change and provide a fun 
 - Performance- Shows results after each typing session.
 - User Accounts- Register and log in with MySQL to track your progress.
 
+## Prerequisites
+- Python 3.10+ installed
+- MySQL Server installed and running
+
 ## Installation:
 
 Clone the repository:
