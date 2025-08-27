@@ -1,6 +1,3 @@
-"""
-This is the signup module. It will open the signup dialog!
-"""
 import mysql.connector
 from dotenv import load_dotenv
 import os
@@ -8,6 +5,7 @@ from password_utils import generate_salt, hash_password, encode_salt
 
 from PySide6.QtWidgets import QDialog, QMessageBox
 from ui.ui_registerdialog import Ui_registerDialog
+from mainwindow import show_message
 
 load_dotenv()
 con = mysql.connector.connect(host=os.getenv("DB_HOST"),user=os.getenv("DB_USER"),password=os.getenv("DB_PASS"))
@@ -38,12 +36,12 @@ class RegisterDialog(QDialog):
     def is_valid_username(self, username):
         if " " in username or username != username.strip():
             return False
-        return username.isalnum()
+        return username.isalnum() and username.isascii()
 
     def is_valid_password(self, password):
         if " " in password or password != password.strip():
             return False
-        return password.isalnum()
+        return password.isalnum() and password.isascii()
 
     # register button handler
     def handle_ok(self):
@@ -51,11 +49,11 @@ class RegisterDialog(QDialog):
         password = self.ui.reg_passwordField.text()
         
         if not self.is_valid_username(username):
-            QMessageBox.warning(self, "Error", "Invalid username format")
+            show_message(self, "Error", "Invalid username format", icon=QMessageBox.Warning)
             return
 
         if not self.is_valid_password(password):
-            QMessageBox.warning(self, "Error", "Invalid password format")
+            show_message(self, "Error", "Invalid password format", icon=QMessageBox.Warning)
             return
 
 
@@ -69,10 +67,10 @@ class RegisterDialog(QDialog):
                 (username.strip(), hashed_pwd, salt_b64)
             )
             con.commit()
-            QMessageBox.information(self, "Success", f"User '{username}' registered successfully!")
+            show_message(self, "Success", f"User '{username}' registered successfully!", icon=QMessageBox.Information)
             self.accept() 
         except mysql.connector.IntegrityError:
-            QMessageBox.warning(self, "Error", "Username already exists")
+            show_message(self, "Error", "Username already exists", icon=QMessageBox.Warning)
 
     # cancel button handler
     def handle_cancel(self):

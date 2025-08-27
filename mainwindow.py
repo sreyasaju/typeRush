@@ -1,6 +1,6 @@
 import sys
 
-from PySide6.QtWidgets import QApplication, QMainWindow, QDialog
+from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QMessageBox
 
 from ui.ui_mainwindow import Ui_MainWindow
 
@@ -19,8 +19,9 @@ class MainWindow(QMainWindow):
         logindialog = LoginDialog(self)
         result = logindialog.exec()
         if result == QDialog.Accepted:
+            user_id = logindialog.user_id
             from home import HomeWindow
-            self.home_window = HomeWindow()
+            self.home_window = HomeWindow(user_id=user_id)
             self.home_window.show()
             self.close()
 
@@ -29,18 +30,47 @@ class MainWindow(QMainWindow):
         registerdialog = RegisterDialog(self)
         registerdialog.exec()
 
+def show_message(parent, title, text, icon=QMessageBox.Information):
+    msg = QMessageBox(parent)
+    msg.setWindowTitle(title)
+    msg.setText(text)
+    msg.setIcon(icon)
+    msg.setStandardButtons(QMessageBox.Ok)
+    msg.setOption(QMessageBox.DontUseNativeDialog, True) # strictly use Qt dialog
+
+    msg.setStyleSheet("""
+        QMessageBox {
+            background-color: #E2FBFF;
+            color: #004A55;
+            font-family: 'Baloo Chettan 2', sans-serif;
+            font-size: 14px;
+        }
+        QMessageBox QLabel {
+            color: #004A55;
+        }
+        QMessageBox QDialogButtonBox QPushButton {
+            background-color: #C4DADD;
+            color: #004A55;
+            font-weight: bold;
+            min-width: 70px;
+            min-height: 25px;
+        }
+        QMessageBox QDialogButtonBox QPushButton:hover {
+            background-color: #A7C9CE;
+        }
+    """)
+    
+    msg.exec()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setStyleSheet("""
-    QMessageBox {
-        background-color: #e6faff;  
-        font-size: 14px;
-        font-family: 'Baloo Chettan 2';
-    }
-    QMessageBox QLabel {
-        color: #053b37;
-    }
+        QMessageBox QLabel { 
+            color: #004C58; 
+        }
+        QMessageBox QPushButton { 
+            color: #004C58; 
+        }
     """)
     widget = MainWindow()
 
