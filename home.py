@@ -18,9 +18,9 @@ class HomeWindow(QMainWindow):
         self.ui.setupUi(self)
         self.user_id = user_id
 
-        run_sql_file("paragraphs.sql")
-        run_sql_file("results.sql")  
-        run_sql_file("paragraphs_data.sql")
+        run_sql_file("databases/paragraphs_data.sql")
+        run_sql_file("databases/results.sql")  
+        run_sql_file("databases/paragraphs.sql")
 
 
         self.ui.startbutton.clicked.connect(self.open_settings)
