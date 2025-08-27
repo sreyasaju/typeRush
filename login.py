@@ -1,6 +1,3 @@
-"""
-This is the login module. It will open the login dialog!
-"""
 import mysql.connector
 from dotenv import load_dotenv
 import os
