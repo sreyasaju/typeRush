@@ -12,6 +12,7 @@ from PySide6.QtWidgets import QDialog, QMainWindow
 from utils import calculate_wpm, calculate_accuracy
 from settings import SettingsDialog
 from ui.ui_typinggame import Ui_typingGame
+from mainwindow import show_message
 
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QMessageBox, QTextEdit
@@ -23,10 +24,11 @@ from constants import paragraphs
 
 load_dotenv()
 class TypingGameWindow(QMainWindow):
-    def __init__(self, duration=60, parent=None):
+    def __init__(self, user_id, duration=60, parent=None):
         super().__init__(parent)
         self.ui = Ui_typingGame()
         self.ui.setupUi(self)
+        self.user_id = user_id
         self.duration = duration
         self.time_left = duration
         self.current_paragraph = ""
@@ -109,17 +111,17 @@ class TypingGameWindow(QMainWindow):
         accuracy = calculate_accuracy(self.total_typed_text, reference_text) 
         wpm = calculate_wpm(self.total_typed_text, elapsed_time)
         
-        QMessageBox.information(
+        show_message(
             self,
             "Results",
-            f"Accuracy: {accuracy:.2f}% \n WPM: {wpm:.2f} \n Total Characters: {len(self.total_typed_text.strip())}"
+            f"Accuracy: {accuracy:.2f}% \nWPM: {wpm:.2f} \nTotal Characters: {len(self.total_typed_text.strip())}",
+            icon=QMessageBox.Information
         )
-
-        save_results_to_db(accuracy, wpm, len(self.total_typed_text.strip()))
+        save_results_to_db(self.user_id, accuracy, wpm, len(self.total_typed_text.strip()))
 
     def handle_homebutton(self):
         from home import HomeWindow
-        self.home_window = HomeWindow()
+        self.home_window = HomeWindow(user_id=self.user_id)
         self.home_window.show()
         self.close()
     
@@ -138,7 +140,7 @@ class TypingGameWindow(QMainWindow):
             self.game_over = False
             self.timer.stop()
 
-def save_results_to_db(accuracy, wpm, total_chars):
+def save_results_to_db(user_id, accuracy, wpm, total_chars):
     try:
         con = mysql.connector.connect(
             host=os.getenv("DB_HOST"),
@@ -148,8 +150,8 @@ def save_results_to_db(accuracy, wpm, total_chars):
         )
         cur = con.cursor()
         cur.execute(
-            "INSERT INTO typing_results (accuracy, wpm, total_chars) VALUES (%s, %s, %s)",
-            (accuracy, wpm, total_chars)
+            "INSERT INTO typing_results (user_id, accuracy, wpm, total_chars) VALUES (%s, %s, %s, %s)",
+            (user_id, accuracy, wpm, total_chars)
         )
         con.commit()
     except Error as e:
@@ -159,27 +161,6 @@ def save_results_to_db(accuracy, wpm, total_chars):
             cur.close()
         if 'con' in locals() and con.is_connected():
             con.close()
-
-def run_sql_file(filename):
-    con = mysql.connector.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        user=os.getenv("DB_USER", "root"),
-        password=os.getenv("DB_PASS", "")
-    )
-
-    with open(filename, 'r') as f:
-       sql_script = f.read()
-        
-    with con.cursor() as cur:
-        cur.execute("CREATE DATABASE IF NOT EXISTS typerush_db;")
-        con.database = "typerush_db"
-        cur.execute(sql_script)
-        print(sql_script)
-    
-    con.commit()        
-
-    print(f"Executed {filename} successfully!")
-
 
 def get_paragraphs_from_db():
     con = mysql.connector.connect(
@@ -200,10 +181,6 @@ if __name__ == "__main__":
     from PySide6.QtWidgets import QApplication
     import sys
     try:
-        run_sql_file("paragraphs.sql")
-        run_sql_file("results.sql")  
-        run_sql_file("paragraphs_data.sql")
-
         app = QApplication(sys.argv)
         settings_dialog = SettingsDialog()
 
@@ -211,7 +188,7 @@ if __name__ == "__main__":
             duration = settings_dialog.duration
 
             global window
-            window = TypingGameWindow(duration=duration)
+            window = TypingGameWindow(user_id=1, duration=duration)
             window.show()
 
             app.exec()

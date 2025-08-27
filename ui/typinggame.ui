@@ -16,10 +16,17 @@
     <height>605</height>
    </size>
   </property>
+  <property name="palette">
+   <palette>
+    <active/>
+    <inactive/>
+    <disabled/>
+   </palette>
+  </property>
   <property name="font">
    <font>
-    <family>Ubuntu</family>
-    <pointsize>14</pointsize>
+    <family>Baloo Chettan 2</family>
+    <pointsize>18</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -29,7 +36,7 @@
    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;harmonize&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(39, 43, 140);</string>
+   <string notr="true"/>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>
@@ -46,6 +53,19 @@
      <width>850</width>
      <height>605</height>
     </size>
+   </property>
+   <property name="palette">
+    <palette>
+     <active/>
+     <inactive/>
+     <disabled/>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <family>Baloo Chettan 2</family>
+     <pointsize>18</pointsize>
+    </font>
    </property>
    <widget class="QGroupBox" name="settings">
     <property name="enabled">
