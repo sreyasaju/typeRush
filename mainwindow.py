@@ -64,6 +64,19 @@ def show_message(parent, title, text, icon=QMessageBox.Information):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+
+    import os
+    from PySide6.QtGui import QFontDatabase, QFont
+
+    font_path = os.path.join(os.path.dirname(__file__), "assets", "font", "BalooChettan2-VariableFont_wght.ttf")
+    font_id = QFontDatabase.addApplicationFont(font_path)
+    if font_id != -1:
+        font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
+        app.setFont(QFont(font_family)) 
+    else:
+        print("Failed to load custom font. Using system default.")
+
+
     app.setStyleSheet("""
         QMessageBox QLabel { 
             color: #004C58; 
