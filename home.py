@@ -1,16 +1,27 @@
 
 from PySide6.QtWidgets import QMainWindow, QDialog, QApplication
 import sys
+import mysql.connector
+from dotenv import load_dotenv
+import os   
 from ui.ui_home import Ui_home 
 from settings import SettingsDialog
 from typinggame import TypingGameWindow
 from progress import ProgressWindow
 
+load_dotenv()
+
 class HomeWindow(QMainWindow):
-    def __init__(self, parent=None):
+    def __init__(self, user_id, parent=None):
         super().__init__(parent)
         self.ui = Ui_home()
         self.ui.setupUi(self)
+        self.user_id = user_id
+
+        run_sql_file("paragraphs.sql")
+        run_sql_file("results.sql")  
+        run_sql_file("paragraphs_data.sql")
+
 
         self.ui.startbutton.clicked.connect(self.open_settings)
         self.ui.progressbutton.clicked.connect(self.open_progress_window)
@@ -21,11 +32,11 @@ class HomeWindow(QMainWindow):
         if settings_dialog.exec() == QDialog.Accepted:
             duration = settings_dialog.duration
             self.close()
-            self.typing_game = TypingGameWindow(duration)
+            self.typing_game = TypingGameWindow(user_id=self.user_id, duration=duration)
             self.typing_game.show()
 
     def open_progress_window(self):
-        self.progress_window = ProgressWindow(self)
+        self.progress_window = ProgressWindow(user_id=self.user_id) 
         self.progress_window.show()
 
     def handle_logout(self):
@@ -33,6 +44,26 @@ class HomeWindow(QMainWindow):
         self.main_window = MainWindow()
         self.main_window.show()
         self.close()
+
+def run_sql_file(filename):
+    con = mysql.connector.connect(
+        host=os.getenv("DB_HOST", "localhost"),
+        user=os.getenv("DB_USER", "root"),
+        password=os.getenv("DB_PASS", "")
+    )
+
+    with open(filename, 'r') as f:
+       sql_script = f.read()
+        
+    with con.cursor() as cur:
+        cur.execute("CREATE DATABASE IF NOT EXISTS typerush_db;")
+        con.database = "typerush_db"
+        cur.execute(sql_script)
+    
+    con.commit()        
+
+    print(f"Executed {filename} successfully!")
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
