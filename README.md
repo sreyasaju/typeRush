@@ -53,6 +53,9 @@ python3 mainwindow.py
 Contributions are welcome! Please submit a pull request or open an issue to discuss potential improvements.
 Add do star the repo ⭐️
 
+## Credits
+- Graphics and UI Elements: All designs and illustrations are self-designed and hence, they are covered under the MIT License
+- Font: The app uses [Baloo Chettan 2](https://fonts.google.com/specimen/Baloo+Chettan+2)
 
 ## License
 ```
