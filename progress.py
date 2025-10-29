@@ -7,7 +7,6 @@ from datetime import datetime
 from matplotlib import font_manager as fm
 
 
-
 import pandas as pd
 import mysql.connector
 from dotenv import load_dotenv
