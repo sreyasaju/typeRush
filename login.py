@@ -2,7 +2,7 @@ from mainwindow import show_message
 from PySide6.QtWidgets import QDialog, QMessageBox
 from ui.ui_logindialog import Ui_loginDialog
 from home import HomeWindow 
-from controllers.auth_controller import AuthController
+from core.auth_controller import AuthController
 
 
 class LoginDialog(QDialog):
