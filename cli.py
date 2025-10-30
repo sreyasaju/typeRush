@@ -1,10 +1,8 @@
 #cli.py 
 import sys
-from controllers.auth_controller import AuthController
+from core.auth_controller import AuthController
 from rich.console import Console
 from rich.text import Text
-from rich.layout import Layout
-from rich.live import Live
 from rich.panel import Panel
 from rich.align import Align
 
@@ -31,6 +29,8 @@ typerush_banner = r"""
 def show_banner():
     console.print(Align.center(Text(typerush_banner, style=f"bold {blue}")))
 
+
+
 def show_main_menu():
     menu_text = "\n".join([
         "[1] Register",
@@ -44,6 +44,8 @@ def show_main_menu():
         padding = (1,6)
     )
     console.print(Align.center(panel))
+
+
 
 def input_screen(title: str, error: str = ""):
     console.print(Align.center(f"[bold {lavender}]{title}[/bold {lavender}] (press 'Q' to go back)\n"))
