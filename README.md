@@ -2,6 +2,8 @@
 
 ![preview.png](assets/preview.png)
 
+![clipreview.png](assets/clipreview.png)
+
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)
 ![PySide6](https://img.shields.io/badge/PySide6-Qt%20Framework-green?logo=qt&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-Database-orange?logo=mysql&logoColor=white)
