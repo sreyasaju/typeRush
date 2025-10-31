@@ -1,4 +1,5 @@
 import sys
+import resource_rc
 
 def main():
     if "--cli" in sys.argv:

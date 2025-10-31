@@ -1,6 +1,7 @@
 
 from PySide6.QtWidgets import QMainWindow, QDialog, QApplication
 import sys
+import resource_rc
 from dotenv import load_dotenv
 from ui.ui_home import Ui_home 
 from settings import SettingsDialog
