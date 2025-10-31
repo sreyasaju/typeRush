@@ -1,5 +1,6 @@
 import mysql.connector
 import os
+import pandas as pd
 from dotenv import load_dotenv
 from core.utils import calculate_wpm, calculate_accuracy
 from core.constants import paragraphs
@@ -91,10 +92,6 @@ def compute_results(total_typed_text, paragraphs, elapsed_time_seconds):
     total_chars = len(total_typed_text.strip())
     return accuracy, wpm, total_chars
 
-import pandas as pd
-import mysql.connector
-import os
-from dotenv import load_dotenv
 
 load_dotenv()
 

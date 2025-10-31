@@ -59,7 +59,7 @@ class ProgressWindow(QMainWindow):
             """, (self.user_id,))
             rows = cur.fetchall()
             df = pd.DataFrame(rows, columns=["timestamp", "wpm"])
-            # Convert timestamp to date for plotting
+            # convert timestamp to date for plotting
             df["date"] = pd.to_datetime(df["timestamp"]).dt.date
             return df
         except Error as e:
