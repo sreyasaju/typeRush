@@ -14,7 +14,6 @@ import os
 
 load_dotenv()
 
-# Relative path to font
 font_path = "assets/font/BalooChettan2-VariableFont_wght.ttf"
 custom_font = fm.FontProperties(fname=font_path)
 
@@ -26,10 +25,8 @@ class ProgressWindow(QMainWindow):
         self.user_id = user_id
 
         self.ui.homebutton.clicked.connect(self.handle_homebutton)
-        # Fetch all progress for plotting
         self.data = self.get_all_progress()
 
-        # Fetch latest session for labels
         latest_data = self.get_latest_progress()
         if latest_data:
             wpm, accuracy, total_chars, timestamp = latest_data
@@ -106,16 +103,13 @@ class ProgressWindow(QMainWindow):
         if self.data.empty:
             return
 
-        # Ensure date column is datetime
         if not pd.api.types.is_datetime64_any_dtype(self.data["date"]):
             self.data["date"] = pd.to_datetime(self.data["date"])
 
-        # Format date for X-axis as DDMMYYYY
         x_labels = self.data["date"].dt.day
 
         import numpy as np
 
-        # Create figure and axes
         self.fig = Figure(figsize=(4, 2.1), dpi=100)  # 400x210 pixels
         self.ax = self.fig.add_subplot(111)
         self.ax.plot(np.arange(len(x_labels)), self.data["wpm"], marker="o", color="#00877e", lw=2)
@@ -137,7 +131,6 @@ class ProgressWindow(QMainWindow):
         self.ax.yaxis.label.set_color('#00877e')
         self.ax.title.set_color('#00877e')
 
-        
 
         if hasattr(self, "canvas"):
             self.canvas.setParent(None)
