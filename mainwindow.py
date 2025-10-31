@@ -1,5 +1,5 @@
 import sys
-
+import os 
 from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QMessageBox
 
 from ui.ui_mainwindow import Ui_MainWindow
@@ -10,7 +10,6 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # connect buttons to handlers
         self.ui.loginbutton.clicked.connect(self.open_login_dialog)
         self.ui.registerbutton.clicked.connect(self.open_register_dialog)
 
