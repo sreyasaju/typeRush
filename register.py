@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QDialog, QMessageBox
 from ui.ui_registerdialog import Ui_registerDialog
 from mainwindow import show_message
-from controllers.auth_controller import AuthController
+from core.auth_controller import AuthController
 
 class RegisterDialog(QDialog):
     def __init__(self, parent=None):
