@@ -8,6 +8,8 @@ from ui.ui_home import Ui_home
 from settings import SettingsDialog
 from typinggame import TypingGameWindow
 from progress import ProgressWindow
+from core.core import initialize_database
+
 
 load_dotenv()
 
@@ -16,12 +18,9 @@ class HomeWindow(QMainWindow):
         super().__init__(parent)
         self.ui = Ui_home()
         self.ui.setupUi(self)
+        
         self.user_id = user_id
-
-        run_sql_file("databases/paragraphs_data.sql")
-        run_sql_file("databases/results.sql")  
-        run_sql_file("databases/paragraphs.sql")
-
+        initialize_database()
 
         self.ui.startbutton.clicked.connect(self.open_settings)
         self.ui.progressbutton.clicked.connect(self.open_progress_window)
@@ -45,24 +44,6 @@ class HomeWindow(QMainWindow):
         self.main_window.show()
         self.close()
 
-def run_sql_file(filename):
-    con = mysql.connector.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        user=os.getenv("DB_USER", "root"),
-        password=os.getenv("DB_PASS", "")
-    )
-
-    with open(filename, 'r') as f:
-       sql_script = f.read()
-        
-    with con.cursor() as cur:
-        cur.execute("CREATE DATABASE IF NOT EXISTS typerush_db;")
-        con.database = "typerush_db"
-        cur.execute(sql_script)
-    
-    con.commit()        
-
-    print(f"Executed {filename} successfully!")
 
 
 if __name__ == "__main__":
