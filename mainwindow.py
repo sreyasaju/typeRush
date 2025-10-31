@@ -1,4 +1,5 @@
 import sys
+import resource_rc
 import os 
 from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QMessageBox
 

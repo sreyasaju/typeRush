@@ -1,3 +1,4 @@
+import resource_rc
 from ui.ui_progress import Ui_progresswindow
 from PySide6.QtWidgets import QMainWindow
 from mysql.connector import Error

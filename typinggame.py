@@ -1,3 +1,4 @@
+import resource_rc
 from PySide6.QtWidgets import QMainWindow, QDialog, QTextEdit, QMessageBox
 from PySide6.QtCore import QTimer
 from PySide6.QtGui import QTextCharFormat, QTextCursor, QColor

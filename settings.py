@@ -1,3 +1,4 @@
+import resource_rc
 from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QMessageBox
 from ui.ui_settings import Ui_settings
 

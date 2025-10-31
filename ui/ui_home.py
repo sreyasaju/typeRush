@@ -193,7 +193,7 @@ class Ui_home(object):
         self.bg_image.setObjectName(u"bg_image")
         self.bg_image.setGeometry(QRect(-30, -20, 961, 671))
         self.bg_image.setAutoFillBackground(False)
-        self.bg_image.setPixmap(QPixmap(u"assets/typinggame.png"))
+        self.bg_image.setPixmap(QPixmap(u"../assets/typinggame.png"))
         self.bg_image.setScaledContents(True)
         self.bg_image.setMargin(21)
         self.bg_image.raise_()
