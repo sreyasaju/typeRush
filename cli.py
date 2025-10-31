@@ -19,6 +19,10 @@ from prompt_toolkit import PromptSession
 from prompt_toolkit.patch_stdout import patch_stdout
 from prompt_toolkit.formatted_text import HTML
 from prompt_toolkit.application import get_app 
+from prompt_toolkit.key_binding import KeyBindings
+from prompt_toolkit.keys import Keys
+from prompt_toolkit.enums import EditingMode
+
 
 # TODO: split this whole loong file.
 # my coral colours
@@ -78,7 +82,7 @@ def show_home_screen(username: str):
         menu_text = "\n".join([
             "[1] Start Test",
             "[2] View Progress",
-            "[q] Logout"
+            "[Q] Logout"
         ])
         console.print(Align.center(Panel(menu_text, title=f"[bold {cyan}]{username}'s Menu[/bold {cyan}]", padding=(1, 6))))
 
@@ -88,7 +92,7 @@ def show_home_screen(username: str):
             start_test(username)
         elif choice == '2':
             view_progress(username)
-        elif choice == 'q':
+        elif choice.upper() == 'Q':
             return
 
 
@@ -208,18 +212,6 @@ def cli_typing_game(user_id, duration=12):
     timer = threading.Thread(target=timer_thread, daemon=True)
     timer.start()
 
-    from prompt_toolkit.key_binding import KeyBindings
-
-    # create key bindings
-    bindings = KeyBindings()
-
-    @bindings.add('c-v')  # intercept Ctrl+V paste
-    def _(event):
-        console.print("[bold red]Pasting is not allowed![/bold red]")
-        event.app.current_buffer.reset()  # bah! no cheating here!!!
-
-    session = PromptSession(key_bindings=bindings)
-
     def bottom_toolbar():
         nonlocal game_over, start_time, total_typed_text
         try:
@@ -248,6 +240,23 @@ def cli_typing_game(user_id, duration=12):
     
     current_input = ""
 
+    # create key bindings
+    bindings = KeyBindings()
+
+    # bah! no cheating!! psst.. only for windows/linux
+    @bindings.add('c-v')
+    def _(event):
+        console.print("[bold red]Pasting is not allowed![/bold red]")
+        event.app.current_buffer.reset()
+    #TODO: block cmd+V (macOS)
+
+    session = PromptSession(
+        key_bindings=bindings,
+        enable_history_search=False,
+        editing_mode=EditingMode.VI,
+        mouse_support=False,
+        enable_system_prompt=False
+    )
     
     while not game_over:
         try:
