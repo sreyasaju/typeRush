@@ -208,7 +208,17 @@ def cli_typing_game(user_id, duration=12):
     timer = threading.Thread(target=timer_thread, daemon=True)
     timer.start()
 
-    session = PromptSession()
+    from prompt_toolkit.key_binding import KeyBindings
+
+    # create key bindings
+    bindings = KeyBindings()
+
+    @bindings.add('c-v')  # intercept Ctrl+V paste
+    def _(event):
+        console.print("[bold red]Pasting is not allowed![/bold red]")
+        event.app.current_buffer.reset()  # bah! no cheating here!!!
+
+    session = PromptSession(key_bindings=bindings)
 
     def bottom_toolbar():
         nonlocal game_over, start_time, total_typed_text
