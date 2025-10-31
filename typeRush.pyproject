@@ -1,10 +1,13 @@
 {
     "files": [
-        "home.ui",
-        "logindialog.ui",
-        "mainwindow.py",
-        "mainwindow.ui",
-        "signupdialog.ui",
-        "typinggame.ui"
+        "ui/home.ui",
+        "ui/logindialog.ui",
+        "ui/mainwindow.ui",
+        "resource.qrc",
+        "ui/typinggame.ui",
+        "ui/settings.ui",
+        "ui/registerdialog.ui",
+        "ui/logindialog.ui",
+        "ui/progress.ui"
     ]
 }

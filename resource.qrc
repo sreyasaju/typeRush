@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/cool">
+        <file>assets/underwater.png</file>
+        <file>assets/typinggame.png</file>
+    </qresource>
+    <qresource prefix="/font">
+        <file>assets/font/BalooChettan2-VariableFont_wght.ttf</file>
+    </qresource>
+</RCC>

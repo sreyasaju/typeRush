@@ -18,6 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QGroupBox,
     QLabel, QMainWindow, QPushButton, QSizePolicy,
     QWidget)
+import resource_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -179,7 +180,7 @@ class Ui_MainWindow(object):
         self.bg_image.setObjectName(u"bg_image")
         self.bg_image.setGeometry(QRect(-20, -60, 471, 691))
         self.bg_image.setAutoFillBackground(False)
-        self.bg_image.setPixmap(QPixmap(u"assets/underwater.png"))
+        self.bg_image.setPixmap(QPixmap(u":/cool/assets/underwater.png"))
         self.bg_image.setScaledContents(True)
         self.bg_image.setMargin(21)
         self.subtitle = QLabel(self.groupBox_2)
