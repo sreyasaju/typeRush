@@ -1,9 +1,7 @@
 
 from PySide6.QtWidgets import QMainWindow, QDialog, QApplication
 import sys
-import mysql.connector
 from dotenv import load_dotenv
-import os   
 from ui.ui_home import Ui_home 
 from settings import SettingsDialog
 from typinggame import TypingGameWindow
