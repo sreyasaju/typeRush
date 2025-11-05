@@ -1,8 +1,8 @@
 import sys
 import resource_rc
-import os 
+import os
 from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QMessageBox
-
+from PySide6.QtGui import QFontDatabase, QFont
 from ui.ui_mainwindow import Ui_MainWindow
 
 class MainWindow(QMainWindow):
@@ -10,6 +10,10 @@ class MainWindow(QMainWindow):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        fid = QFontDatabase.addApplicationFont(":/font/assets/font/BalooChettan2-VariableFont_wght.ttf")
+        fam = QFontDatabase.applicationFontFamilies(fid)[0]
+        self.setFont(QFont(fam, 20))
 
         self.ui.loginbutton.clicked.connect(self.open_login_dialog)
         self.ui.registerbutton.clicked.connect(self.open_register_dialog)
@@ -36,8 +40,7 @@ def show_message(parent, title, text, icon=QMessageBox.Information):
     msg.setText(text)
     msg.setIcon(icon)
     msg.setStandardButtons(QMessageBox.Ok)
-    msg.setOption(QMessageBox.DontUseNativeDialog, True) # strictly use Qt dialog
-
+    msg.setOption(QMessageBox.DontUseNativeDialog, True)
     msg.setStyleSheet("""
         QMessageBox {
             background-color: #E2FBFF;
@@ -59,33 +62,17 @@ def show_message(parent, title, text, icon=QMessageBox.Information):
             background-color: #A7C9CE;
         }
     """)
-    
     msg.exec()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-
-    import os
-    from PySide6.QtGui import QFontDatabase, QFont
-
-    font_path = os.path.join(os.path.dirname(__file__), "assets", "font", "BalooChettan2-VariableFont_wght.ttf")
-    font_id = QFontDatabase.addApplicationFont(font_path)
-    if font_id != -1:
-        font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
-        app.setFont(QFont(font_family)) 
+    fid = QFontDatabase.addApplicationFont(":/font/assets/font/BalooChettan2-VariableFont_wght.ttf")
+    if fid != -1:
+        fam = QFontDatabase.applicationFontFamilies(fid)[0]
+        app.setFont(QFont(fam, 20))
     else:
-        print("Failed to load custom font. Using system default.")
+        print("Failed to load custom font, using system default.")
 
-
-    app.setStyleSheet("""
-        QMessageBox QLabel { 
-            color: #004C58; 
-        }
-        QMessageBox QPushButton { 
-            color: #004C58; 
-        }
-    """)
     widget = MainWindow()
-
     widget.show()
     sys.exit(app.exec())

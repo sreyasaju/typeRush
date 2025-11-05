@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QDialog, QMessageBox
 from ui.ui_logindialog import Ui_loginDialog
 from home import HomeWindow 
 from core.auth_controller import AuthController
+from PySide6.QtGui import QFontDatabase, QFont
 
 
 class LoginDialog(QDialog):
@@ -13,6 +14,10 @@ class LoginDialog(QDialog):
         self.ui.setupUi(self)
         self.user_id = None
         self.auth_controller = AuthController()
+
+        fid = QFontDatabase.addApplicationFont(":/font/assets/font/BalooChettan2-VariableFont_wght.ttf")
+        fam = QFontDatabase.applicationFontFamilies(fid)[0]
+        self.setFont(QFont(fam, 20))
 
         self.ui.log_ok.clicked.connect(self.handle_ok)
         self.ui.log_cancel.clicked.connect(self.handle_cancel)
