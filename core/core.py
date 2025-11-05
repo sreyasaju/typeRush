@@ -1,11 +1,20 @@
 import mysql.connector
 import os
+import sys
 import pandas as pd
 from dotenv import load_dotenv
 from core.utils import calculate_wpm, calculate_accuracy
 from core.constants import paragraphs
 
-load_dotenv()
+if getattr(sys, "frozen", False):
+    env_path = os.path.join(os.path.dirname(sys.executable), ".env")
+else: 
+    env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".env")
+
+if os.path.exists(env_path):
+    load_dotenv(env_path)
+else:
+    print(".env file not found at", env_path)
 
 
 def run_sql_file(filename):

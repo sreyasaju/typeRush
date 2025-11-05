@@ -1,7 +1,7 @@
 import resource_rc
-from PySide6.QtWidgets import QMainWindow, QDialog, QTextEdit, QMessageBox
+from PySide6.QtWidgets import QMainWindow, QDialog, QTextEdit, QMessageBox, QApplication
 from PySide6.QtCore import QTimer
-from PySide6.QtGui import QTextCharFormat, QTextCursor, QColor
+from PySide6.QtGui import QTextCharFormat, QTextCursor, QColor, QFontDatabase, QFont
 from ui.ui_typinggame import Ui_typingGame
 import random
 import time
@@ -22,6 +22,10 @@ class TypingGameWindow(QMainWindow):
         self.game_over = False
         self.paragraphs = get_paragraphs_from_db()
 
+        fid = QFontDatabase.addApplicationFont(":/font/assets/font/BalooChettan2-VariableFont_wght.ttf")
+        fam = QFontDatabase.applicationFontFamilies(fid)[0]
+        self.setFont(QFont(fam, 14))
+
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_timer)
         self.ui.textfield.textChanged.connect(self.handle_changes)
@@ -34,7 +38,6 @@ class TypingGameWindow(QMainWindow):
         self.start_new_paragraph()
     
     def start_new_paragraph(self):
-        # paragraph from DB or fallback
         self.current_paragraph = random.choice(self.paragraphs)
         self.all_paragraphs_shown.append(self.current_paragraph)
         self.ui.sentencelabel.setText(self.current_paragraph)
@@ -45,38 +48,35 @@ class TypingGameWindow(QMainWindow):
         reference = self.current_paragraph
 
         if not typed_text:
-            self.ui.textfield.setExtraSelections([])  # clear highlights
+            self.ui.textfield.setExtraSelections([])
             return
 
-        # start timer on first keypress
         if not self.timer.isActive():
             self.start_time = time.time()
             self.timer.start(1000)
 
-        # create extra selections for highlighting wrong chars
         selections = []
 
-        matcher = difflib.SequenceMatcher(None, typed_text, reference)  # Levenshtein distance calculations
+        matcher = difflib.SequenceMatcher(None, typed_text, reference)
 
         for tag, i1, i2, j1, j2 in matcher.get_opcodes():
             if tag in ("replace", "delete", "insert"):
                 for position in range(i1, i2):
                     selection = QTextEdit.ExtraSelection()
-                    format = QTextCharFormat()
-                    format.setBackground(QColor("#ffcccc"))  # mistakes.....
-                    selection.format = format
+                    fmt = QTextCharFormat()
+                    fmt.setBackground(QColor("#ffcccc"))
+                    selection.format = fmt
                     cursor = self.ui.textfield.textCursor()
                     cursor.setPosition(position)
-                    cursor.movePosition(QTextCursor.Right, QTextCursor.KeepAnchor, 1)   
+                    cursor.movePosition(QTextCursor.Right, QTextCursor.KeepAnchor, 1)
                     selection.cursor = cursor
                     selections.append(selection)
 
-        # apply highlights
         self.ui.textfield.setExtraSelections(selections)
 
         if len(typed_text.strip()) >= len(reference.strip()):
             self.total_typed_text += " " + typed_text.strip()
-            self.start_new_paragraph()  # fast user? next paragraph!!!
+            self.start_new_paragraph()
             
     def update_timer(self):
         if self.game_over:
@@ -124,7 +124,6 @@ class TypingGameWindow(QMainWindow):
         self.settings_dialog = SettingsDialog(self)
         if self.settings_dialog.exec() == QDialog.Accepted:
             new_duration = self.settings_dialog.duration
-            # reset game state
             self.duration = new_duration
             self.time_left = new_duration
             self.total_typed_text = ""
@@ -137,19 +136,16 @@ class TypingGameWindow(QMainWindow):
 
 if __name__ == "__main__":
     import traceback
-    from settings import SettingsDialog
-    from PySide6.QtWidgets import QApplication
     import sys
     try:
         app = QApplication(sys.argv)
-        settings_dialog = SettingsDialog()
+        from settings import SettingsDialog
 
+        settings_dialog = SettingsDialog()
         if settings_dialog.exec() == QDialog.Accepted:
             duration = settings_dialog.duration
-
             window = TypingGameWindow(user_id=1, duration=duration)
             window.show()
-
             app.exec()
         else:
             print("Settings canceled, exiting.")
