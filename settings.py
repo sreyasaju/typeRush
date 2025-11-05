@@ -1,5 +1,6 @@
 import resource_rc
 from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QMessageBox
+from PySide6.QtGui import QFontDatabase, QFont
 from ui.ui_settings import Ui_settings
 
 class SettingsDialog(QDialog):
@@ -7,6 +8,10 @@ class SettingsDialog(QDialog):
         super().__init__(parent)
         self.ui = Ui_settings()
         self.ui.setupUi(self)
+
+        fid = QFontDatabase.addApplicationFont(":/font/assets/font/BalooChettan2-VariableFont_wght.ttf")
+        fam = QFontDatabase.applicationFontFamilies(fid)[0]
+        self.setFont(QFont(fam, 20))
         
         self.ui.settings_cancelbutton.clicked.connect(self.reject)
         self.ui.settings_readybutton.clicked.connect(self.handle_ready)
