@@ -18,6 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QGroupBox,
     QLabel, QMainWindow, QPushButton, QSizePolicy,
     QWidget)
+import resource_rc
 
 class Ui_home(object):
     def setupUi(self, home):
@@ -29,7 +30,7 @@ class Ui_home(object):
         brush = QBrush(QColor(0, 0, 0, 255))
         brush.setStyle(Qt.SolidPattern)
         palette.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        brush1 = QBrush(QColor(226, 251, 255, 255))
+        brush1 = QBrush(QColor(39, 43, 140, 255))
         brush1.setStyle(Qt.SolidPattern)
         palette.setBrush(QPalette.Active, QPalette.Button, brush1)
         brush2 = QBrush(QColor(255, 255, 255, 255))
@@ -47,7 +48,7 @@ class Ui_home(object):
         palette.setBrush(QPalette.Active, QPalette.Text, brush)
         palette.setBrush(QPalette.Active, QPalette.BrightText, brush2)
         palette.setBrush(QPalette.Active, QPalette.ButtonText, brush)
-        palette.setBrush(QPalette.Active, QPalette.Base, brush2)
+        palette.setBrush(QPalette.Active, QPalette.Base, brush1)
         palette.setBrush(QPalette.Active, QPalette.Window, brush1)
         palette.setBrush(QPalette.Active, QPalette.Shadow, brush)
         palette.setBrush(QPalette.Active, QPalette.AlternateBase, brush3)
@@ -70,7 +71,7 @@ class Ui_home(object):
         palette.setBrush(QPalette.Inactive, QPalette.Text, brush)
         palette.setBrush(QPalette.Inactive, QPalette.BrightText, brush2)
         palette.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.Base, brush2)
+        palette.setBrush(QPalette.Inactive, QPalette.Base, brush1)
         palette.setBrush(QPalette.Inactive, QPalette.Window, brush1)
         palette.setBrush(QPalette.Inactive, QPalette.Shadow, brush)
         palette.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush3)
@@ -92,13 +93,15 @@ class Ui_home(object):
         palette.setBrush(QPalette.Disabled, QPalette.Base, brush1)
         palette.setBrush(QPalette.Disabled, QPalette.Window, brush1)
         palette.setBrush(QPalette.Disabled, QPalette.Shadow, brush)
-        palette.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush1)
+        brush8 = QBrush(QColor(226, 251, 255, 255))
+        brush8.setStyle(Qt.SolidPattern)
+        palette.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush8)
         palette.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush6)
         palette.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush)
-        brush8 = QBrush(QColor(113, 125, 127, 127))
-        brush8.setStyle(Qt.SolidPattern)
+        brush9 = QBrush(QColor(113, 125, 127, 127))
+        brush9.setStyle(Qt.SolidPattern)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush8)
+        palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush9)
 #endif
         palette.setBrush(QPalette.Disabled, QPalette.Accent, brush2)
         home.setPalette(palette)
@@ -193,7 +196,7 @@ class Ui_home(object):
         self.bg_image.setObjectName(u"bg_image")
         self.bg_image.setGeometry(QRect(-30, -20, 961, 671))
         self.bg_image.setAutoFillBackground(False)
-        self.bg_image.setPixmap(QPixmap(u"../assets/typinggame.png"))
+        self.bg_image.setPixmap(QPixmap(u":/cool/assets/typinggame.png"))
         self.bg_image.setScaledContents(True)
         self.bg_image.setMargin(21)
         self.bg_image.raise_()

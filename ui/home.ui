@@ -31,9 +31,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>226</red>
-        <green>251</green>
-        <blue>255</blue>
+        <red>39</red>
+        <green>43</green>
+        <blue>140</blue>
        </color>
       </brush>
      </colorrole>
@@ -103,18 +103,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>39</red>
+        <green>43</green>
+        <blue>140</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>226</red>
-        <green>251</green>
-        <blue>255</blue>
+        <red>39</red>
+        <green>43</green>
+        <blue>140</blue>
        </color>
       </brush>
      </colorrole>
@@ -186,9 +186,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>226</red>
-        <green>251</green>
-        <blue>255</blue>
+        <red>39</red>
+        <green>43</green>
+        <blue>140</blue>
        </color>
       </brush>
      </colorrole>
@@ -258,18 +258,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>39</red>
+        <green>43</green>
+        <blue>140</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>226</red>
-        <green>251</green>
-        <blue>255</blue>
+        <red>39</red>
+        <green>43</green>
+        <blue>140</blue>
        </color>
       </brush>
      </colorrole>
@@ -341,9 +341,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>226</red>
-        <green>251</green>
-        <blue>255</blue>
+        <red>39</red>
+        <green>43</green>
+        <blue>140</blue>
        </color>
       </brush>
      </colorrole>
@@ -413,18 +413,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>226</red>
-        <green>251</green>
-        <blue>255</blue>
+        <red>39</red>
+        <green>43</green>
+        <blue>140</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>226</red>
-        <green>251</green>
-        <blue>255</blue>
+        <red>39</red>
+        <green>43</green>
+        <blue>140</blue>
        </color>
       </brush>
      </colorrole>
@@ -757,7 +757,7 @@ border-radius: 15px;
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>../assets/typinggame.png</pixmap>
+        <pixmap resource="../resource.qrc">:/cool/assets/typinggame.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -773,6 +773,8 @@ border-radius: 15px;
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

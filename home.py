@@ -8,6 +8,8 @@ from settings import SettingsDialog
 from typinggame import TypingGameWindow
 from progress import ProgressWindow
 from core.core import initialize_database
+from PySide6.QtGui import QFontDatabase, QFont
+
 
 
 load_dotenv()
@@ -18,6 +20,10 @@ class HomeWindow(QMainWindow):
         self.ui = Ui_home()
         self.ui.setupUi(self)
         
+        fid = QFontDatabase.addApplicationFont(":/font/assets/font/BalooChettan2-VariableFont_wght.ttf")
+        fam = QFontDatabase.applicationFontFamilies(fid)[0]
+        self.setFont(QFont(fam, 20))
+
         self.user_id = user_id
         initialize_database()
 
