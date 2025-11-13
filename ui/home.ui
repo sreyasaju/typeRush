@@ -721,9 +721,9 @@ border-radius: 15px;
        <widget class="QLabel" name="subtitle">
         <property name="geometry">
          <rect>
-          <x>90</x>
+          <x>30</x>
           <y>210</y>
-          <width>251</width>
+          <width>371</width>
           <height>31</height>
          </rect>
         </property>
@@ -738,6 +738,9 @@ border-radius: 15px;
         </property>
         <property name="text">
          <string>Type Fast. Think Future. </string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
       </widget>

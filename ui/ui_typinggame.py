@@ -87,7 +87,7 @@ class Ui_typingGame(object):
         self.sentencelabel.setWordWrap(True)
         self.restartbutton = QPushButton(self.settings)
         self.restartbutton.setObjectName(u"restartbutton")
-        self.restartbutton.setGeometry(QRect(460, 520, 111, 41))
+        self.restartbutton.setGeometry(QRect(460, 520, 131, 41))
         font4 = QFont()
         font4.setFamilies([u"Baloo Chettan 2"])
         font4.setPointSize(18)

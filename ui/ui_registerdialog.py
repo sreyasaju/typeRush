@@ -108,7 +108,7 @@ class Ui_registerDialog(object):
 "color:rgb(10, 24, 25);")
         self.label = QLabel(self.groupBox)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(40, 50, 81, 21))
+        self.label.setGeometry(QRect(40, 50, 331, 21))
         font2 = QFont()
         font2.setFamilies([u"Baloo Chettan 2"])
         font2.setPointSize(20)

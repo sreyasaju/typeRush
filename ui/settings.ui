@@ -96,9 +96,9 @@ color:rgb(10, 24, 25);</string>
    <widget class="QLabel" name="setting_title">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>20</x>
       <y>70</y>
-      <width>81</width>
+      <width>371</width>
       <height>21</height>
      </rect>
     </property>
@@ -114,6 +114,9 @@ color:rgb(10, 24, 25);</string>
     </property>
     <property name="text">
      <string>Settings</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="settings_cancelbutton">
@@ -183,9 +186,9 @@ border-radius: 15px;
    <widget class="QLabel" name="settings_instruction">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>20</x>
       <y>110</y>
-      <width>361</width>
+      <width>381</width>
       <height>21</height>
      </rect>
     </property>
@@ -201,6 +204,9 @@ border-radius: 15px;
     </property>
     <property name="text">
      <string>Enter the duration of the test in seconds!</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
   </widget>
