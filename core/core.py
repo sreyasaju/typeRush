@@ -37,9 +37,10 @@ def run_sql_file(filename):
     print(f"Executed {filename} successfully!")
 
 def initialize_database():
+    run_sql_file("databases/paragraphs.sql")
     run_sql_file("databases/paragraphs_data.sql")
     run_sql_file("databases/results.sql")
-    run_sql_file("databases/paragraphs.sql")
+
 
 def get_paragraphs_from_db():
     try:
