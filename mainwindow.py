@@ -11,12 +11,26 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        fid = QFontDatabase.addApplicationFont(":/font/assets/font/BalooChettan2-VariableFont_wght.ttf")
-        fam = QFontDatabase.applicationFontFamilies(fid)[0]
-        self.setFont(QFont(fam, 20))
+        self.scale_fonts_by_dpi()
 
         self.ui.loginbutton.clicked.connect(self.open_login_dialog)
         self.ui.registerbutton.clicked.connect(self.open_register_dialog)
+
+    def scale_fonts_by_dpi(self):
+        screen = self.screen()
+        dpi = screen.logicalDotsPerInch()
+        base_font_size = 20
+        scaled_font_size = max(10, int(base_font_size * dpi / 96))  # 96 DPI is standard
+        fid = QFontDatabase.addApplicationFont(":/font/assets/font/BalooChettan2-VariableFont_wght.ttf")
+        if fid != -1:
+            fam = QFontDatabase.applicationFontFamilies(fid)[0]
+            font = QFont(fam, scaled_font_size)
+            self.setFont(font)
+            QApplication.instance().setFont(font)
+        else:
+            font = QFont("", scaled_font_size)
+            self.setFont(font)
+            QApplication.instance().setFont(font)
 
     def open_login_dialog(self):
         from login import LoginDialog
@@ -66,12 +80,17 @@ def show_message(parent, title, text, icon=QMessageBox.Information):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    screen = app.primaryScreen()
+    dpi = screen.logicalDotsPerInch()
+    base_font_size = 20
+    scaled_font_size = max(10, int(base_font_size * dpi / 96))  # 96 DPI standard
     fid = QFontDatabase.addApplicationFont(":/font/assets/font/BalooChettan2-VariableFont_wght.ttf")
     if fid != -1:
         fam = QFontDatabase.applicationFontFamilies(fid)[0]
-        app.setFont(QFont(fam, 20))
+        app.setFont(QFont(fam, scaled_font_size))
     else:
         print("Failed to load custom font, using system default.")
+        app.setFont(QFont("", scaled_font_size))
 
     widget = MainWindow()
     widget.show()
