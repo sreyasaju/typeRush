@@ -2,7 +2,7 @@ import sys
 import resource_rc
 import os
 
-os.environ["QT_ENABLE_HIGHDPI_SCALING"] = "1"   
+os.environ["QT_ENABLE_HIGHDPI_SCALING"] = "0"   
 
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QMessageBox
@@ -18,6 +18,11 @@ class MainWindow(QMainWindow):
         fid = QFontDatabase.addApplicationFont(":/font/assets/font/BalooChettan2-VariableFont_wght.ttf")
         fam = QFontDatabase.applicationFontFamilies(fid)[0]
         self.setFont(QFont(fam, 20))
+
+        if sys.platform.startswith("win"):
+            self.ui.typerush.setFont(QFont(fam, 50, 700))
+            self.ui.subtitle.setFont(QFont(fam, 15))
+            # self.ui.typerush.setFont
 
         self.ui.loginbutton.clicked.connect(self.open_login_dialog)
         self.ui.registerbutton.clicked.connect(self.open_register_dialog)
