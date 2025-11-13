@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
 
         if sys.platform.startswith("win"):
             self.ui.typerush.setFont(QFont(fam, 50, 700))
-            self.ui.subtitle.setFont(QFont(fam, 15))
+            self.ui.subtitle.setFont(QFont(fam, 20))
             # self.ui.typerush.setFont
 
         self.ui.loginbutton.clicked.connect(self.open_login_dialog)

@@ -24,6 +24,11 @@ class HomeWindow(QMainWindow):
         fam = QFontDatabase.applicationFontFamilies(fid)[0]
         self.setFont(QFont(fam, 20))
 
+        if sys.platform.startswith("win"):
+            self.ui.typerush.setFont(QFont(fam, 50, 700))
+            self.ui.subtitle.setFont(QFont(fam, 20))
+            # self.ui.typerush.setFont
+
         self.user_id = user_id
         initialize_database()
 
