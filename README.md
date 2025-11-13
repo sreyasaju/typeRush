@@ -8,7 +8,6 @@
 ![PySide6](https://img.shields.io/badge/PySide6-Qt%20Framework-green?logo=qt&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-Database-orange?logo=mysql&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-purple)
-[![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
 
 > Under development!
 
