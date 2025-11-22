@@ -1,3 +1,4 @@
+# home.py
 
 from PySide6.QtWidgets import QMainWindow, QDialog, QApplication
 import sys
@@ -9,7 +10,6 @@ from typinggame import TypingGameWindow
 from progress import ProgressWindow
 from core.core import initialize_database
 from PySide6.QtGui import QFontDatabase, QFont
-
 
 
 load_dotenv()
