@@ -1,3 +1,5 @@
+# core/core.py
+
 import mysql.connector
 import os
 import sys

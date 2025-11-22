@@ -1,3 +1,5 @@
+# core/constants.py
+
 paragraphs = [
     "Global warming is one of the most pressing environmental issues facing our planet today",
     "Reducing carbon emissions is essential to slowing global warming.",
