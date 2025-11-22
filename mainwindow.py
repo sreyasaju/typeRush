@@ -1,3 +1,5 @@
+# mainwindow.py
+
 import sys
 import resource_rc
 import os
