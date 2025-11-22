@@ -1,3 +1,5 @@
+# register.py
+
 import resource_rc
 from PySide6.QtWidgets import QDialog, QMessageBox
 from ui.ui_registerdialog import Ui_registerDialog

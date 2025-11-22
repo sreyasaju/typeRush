@@ -1,3 +1,5 @@
+# typinggame.py
+
 import resource_rc
 from PySide6.QtWidgets import QMainWindow, QDialog, QTextEdit, QMessageBox, QApplication
 from PySide6.QtCore import QTimer

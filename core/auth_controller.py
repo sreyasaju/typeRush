@@ -1,3 +1,5 @@
+# core/auth_controller.py
+
 import os
 import mysql.connector
 from dotenv import load_dotenv
@@ -92,7 +94,7 @@ class AuthController:
         con = mysql_connection()
         cur = con.cursor()
 
-        cur.execute("SELECT password, salt FROM users WHERE username = %s", (username.strip(),)) #parameterized query to prevent SQL injection
+        cur.execute("SELECT password, salt FROM users WHERE username = %s", (username.strip(),)) # parameterized query to prevent SQL injection
         row = cur.fetchone()
 
         cur.close()
